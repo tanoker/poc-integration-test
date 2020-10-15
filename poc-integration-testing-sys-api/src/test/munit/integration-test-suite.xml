@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:munit="http://www.mulesoft.org/schema/mule/munit"
+	xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<munit:config name="scheduler-test-suite.xml" />
+	<munit:test name="records-processing-flow-test" doc:id="f4d0b61b-647c-4fcb-8282-7364db8548a8" description="Test">
+		<munit:execution>
+			<set-payload value='#[%dw 2.0
+output application/json
+---
+{
+	name: "Alan Smith",
+	email: "a2@hotmail.com",
+	currency: "USD",
+	billingCity: "London",
+	billingCountry: "GB",
+	billingStreet: "Wayne Gudson st.",
+	billingZipCode: "38712",
+	mobile: "+146320134893"
+}]' doc:name="Set Payload" doc:id="292a210c-59f6-40be-9891-2d645bd1d855" />
+		</munit:execution>
+		<munit:validation >
+			<http:request method="POST" doc:name="Request" doc:id="623a2ab8-6c42-4467-8a17-80d5b98dbbb2" url="http://mule-four-app-maven-deploy.us-e1.cloudhub.io/api/account"/>
+		</munit:validation>
+	</munit:test>
+
+
+</mule>
