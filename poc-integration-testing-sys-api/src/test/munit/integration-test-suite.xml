@@ -24,9 +24,10 @@ output application/json
 	billingZipCode: "38712",
 	mobile: "+146320134893"
 }]' doc:name="Set Payload" doc:id="292a210c-59f6-40be-9891-2d645bd1d855" />
+			<http:request method="GET" doc:name="Request" doc:id="623a2ab8-6c42-4467-8a17-80d5b98dbbb2" url="http://mule-four-app-maven-deploy.us-e1.cloudhub.io/api/accounts" />
 		</munit:execution>
-		<munit:validation >
-			<http:request method="POST" doc:name="Request" doc:id="623a2ab8-6c42-4467-8a17-80d5b98dbbb2" url="http://mule-four-app-maven-deploy.us-e1.cloudhub.io/api/account"/>
+		<munit:validation>
+			<munit-tools:assert-that doc:name="Assert that" doc:id="dfb8da1d-533e-468d-a5b9-57089f4b4770" expression="#[payload]" is="#[MunitTools::notNullValue()]"/>
 		</munit:validation>
 	</munit:test>
 

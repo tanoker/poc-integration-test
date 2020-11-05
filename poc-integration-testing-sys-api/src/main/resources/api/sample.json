@@ -1,0 +1,23 @@
+[
+	{
+		"name": "John Smith",
+		"email": "ironman@gmail.com",
+		"accountNumber": "001010429320",
+		"currency": "USD",
+		"billingCity": "New York",
+		"billingCity": "USA",
+		"billingStreet": "14th Avenue",
+		"billingZipCode": "10029",
+		"mobile": "+118397369321"
+	},
+	{
+		"name": "Alan Smith",
+		"email": "a2@hotmail.com",
+		"currency": "USD",
+		"billingCity": "London",
+		"billingCountry": "GB",
+		"billingStreet": "Wayne Gudson st.",
+		"billingZipCode": "38712",
+		"mobile": "+146320134893"
+	}
+]

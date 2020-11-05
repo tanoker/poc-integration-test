@@ -1,0 +1,24 @@
+pipeline {
+    agent any
+    stages {
+        stage ('Initialize') {
+            steps {
+                git branch: 'master',
+                    credentialsId: 'git_creds',
+                    url: 'https://github.com/tanoker/poc-integration-test'
+            }
+        }
+
+        stage ('Verification') {
+            steps {
+                dir("poc-integration-testing-sys-api") {
+                    sh '''
+                      ls -a
+                      mvn --version
+                      mvn verify -DmuleDeploy -Dpassword=Andreykrasava1
+                    '''
+                }
+            }
+        }
+    }
+}
